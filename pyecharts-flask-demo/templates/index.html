@@ -8,37 +8,46 @@
 
 </head>
 <body>
+
+    <p>i am head</p>
     <div id="countryBar" style="width:1000px; height:600px;"></div>
     <div id="typeBar" style="width:1000px; height:600px;"></div>
+    <p>i am end</p>
     <script>
-        var chart = echarts.init(document.getElementById('countryBar'), 'light', {renderer: 'canvas'});
+        var chartx = echarts.init(document.getElementById('countryBar'), 'light', {renderer: 'canvas'});
+        var charty = echarts.init(document.getElementById('typeBar'), 'light', {renderer: 'canvas'});
 
         $(
             function () {
-                fetchData(chart);
-                setInterval(fetchData, 2000);
+                fetchData0(chartx);
+                fetchData1(charty);
+                setInterval(fetchData0, 2000);
+                setInterval(fetchData1, 2000);
             }
         );
 
-        function fetchData() {
+        function fetchData0() {
             $.ajax({
                 type: "GET",
                 url: "http://127.0.0.1:5000/countryChart",
                 dataType: 'json',
                 success: function (result) {
-                    chart.setOption(result);
+                    chartx.setOption(result);
                 }
             });
-/*            $.ajax({
+        }
+
+        function fetchData1() {
+            $.ajax({
                 type: "GET",
                 url: "http://127.0.0.1:5000/typeChart",
                 dataType: 'json',
                 success: function (result) {
-                    chart.setOption(result);
+                    charty.setOption(result);
                 }
             });
-*/
         }
+
     </script>
 </body>
 </html>

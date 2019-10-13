@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+
+</head>
+<body>
+    <p>i am head</p>
+    <div id="typeBar" style="width:1000px; height:600px;"></div>
+    <p>i am end</p>
+    <script>
+        var chart = echarts.init(document.getElementById('typeBar'), 'white', {renderer: 'canvas'});
+
+        $(
+            function () {
+                fetchData(chart);
+                setInterval(fetchData, 2000);
+            }
+        );
+
+        function fetchData() {
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/type/typeChart",
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+                    chart.setOption(result);
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>
