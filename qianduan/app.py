@@ -51,9 +51,9 @@ def type_base() -> Bar:
                 ),
             )
         )
-        .add_xaxis(["类型1", "类型2", "类型3", "类型4", "类型5"])
+        .add_xaxis(["喜剧", "动作", "家庭", "战争", "惊悚"])
         .add_yaxis("评分差距", dis1)
-        .set_global_opts(title_opts=opts.TitleOpts(title="国家"))
+        .set_global_opts(title_opts=opts.TitleOpts(title="类型"))
     )
     return c
 
