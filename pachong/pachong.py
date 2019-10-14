@@ -8,5 +8,5 @@ if __name__ == "__main__":
      html = req.text
      bf = BeautifulSoup(html, 'html.parser')
      texts = bf.find_all('div', id = 'content', class_ = 'showtxt')
-     print(texts)
+     print(texts[0].text.replace('\xa0'*8,'\n\n'))
 
